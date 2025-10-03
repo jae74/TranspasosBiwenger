@@ -55,6 +55,7 @@ def get_parsed_html(url, cookies_dict=_default_cookies, local_storage_dict=_defa
 
 
 def extract_player_cards(lxml_tree):
+    print("Extracting player cards...")
     return lxml_tree.xpath('//player-card')
 
 def parse_fichaje(elem):
@@ -99,11 +100,11 @@ def parse_fichaje(elem):
             {
                 'tipo': 'compra',
                 'fecha': parse_date(elem.xpath('.//div[@class="date"]/@title')[0]),
-                'comprador': player_card.xpath('.//user-link')[0].text_content().strip(),
-                'jugador': player_card.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
-                'precio': int(re.sub(r'\s+|€|\.', '', player_card.xpath('.//*[contains(text(), "€")]')[0].text_content())),
+                'comprador': pc.xpath('.//user-link')[0].text_content().strip(),
+                'jugador': pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
+                'precio': int(re.sub(r'\s+|€|\.', '', pc.xpath('.//*[contains(text(), "€")]')[0].text_content())),
             }
-            for player_card in elem.xpath('.//player-card')
+            for pc in elem.xpath('.//player-card')
         ]
     return None
 
@@ -138,6 +139,7 @@ if __name__ == "__main__":
     fichajes_posts = extract_movements(lxml_tree)
     # print(soup.prettify())
     with open("test.html", "w", encoding="utf-8") as f:
+        
         f.write(lxml_html.tostring(lxml_tree, pretty_print=True, encoding='unicode'))
 
     # print(lxml_html.tostring(lxml_tree, pretty_print=True, encoding='unicode'))
@@ -145,8 +147,18 @@ if __name__ == "__main__":
     # print(f"Found {len(player_cards)} player cards.")
     # print(player_cards)
 
-    print(f"Fichajes: {fichajes_posts}")
-    print(f"Found {len(fichajes_posts)} Fichajes:")
-    for post in fichajes_posts:
-        print(post)
-        # print(lxml_html.tostring(post, pretty_print=True, encoding='unicode'))
+    # print(f"Fichajes: {fichajes_posts}")
+    # print(f"Found {len(fichajes_posts)} Fichajes:")
+    with open("fichajes.csv", "a", encoding="utf-8") as f:
+        f.write(f"tipo,fecha,vendedor,comprador,jugador,precio\n")
+        for post in fichajes_posts:
+            print(post)
+            # print(lxml_html.tost
+        # crea un csv donde cada fila es un elemento de la lista fichajes_post
+            # ring(post)
+
+        if post['tipo'] == 'compra':
+            f.write(f"{post['tipo']},{post['fecha']},,{post['comprador']},{post['jugador']},{post['precio']}\n")
+        elif post['tipo'] == 'venta':
+            f.write(f"{post['tipo']},{post['fecha']},{post['vendedor']}, ,{post['jugador']},{post['precio']}\n")
+    f.close()
