@@ -5,6 +5,7 @@ import time
 from lxml import html as lxml_html
 import re
 from datetime import datetime
+import pandas as pd
 
 _default_cookies = {
     'AMCV_2387401053DB208C0A490D4C%40AdobeOrg': '1176715910%7CMCIDTS%7C20333%7CMCMID%7C83191080408405748529212420616018517824%7CMCAID%7CNONE%7CMCOPTOUT-1756827643s%7CNONE%7CvVersion%7C5.4.0',
@@ -64,36 +65,52 @@ def parse_fichaje(elem):
             # Parse the "Fichajes" section
             player_card = elem.xpath('.//player-card')[0]
             return [{
-                'tipo': 'venta',
-                'fecha': parse_date(elem.xpath('.//div[@class="date"]/@title')[0]),
-                'vendedor': elem.xpath('.//user-link')[0].text_content().strip(),
-                'jugador': player_card.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
-                'precio': int(re.sub(r'\s+|€|\.', '', player_card.xpath('.//*[contains(text(), "€")]')[0].text_content())),
-            }]
+                    'tipo': 'venta',
+                    'fecha': parse_date(elem.xpath('.//div[@class="date"]/@title')[0]),
+                    'vendedor': elem.xpath('.//user-link')[0].text_content().strip(),
+                    'jugador': pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
+                    'precio': int(re.sub(r'\s+|€|\.', '', pc.xpath('.//*[contains(text(), "€")]')[0].text_content())),
+                }
+                for pc in elem.xpath('.//player-card')
+            ]
         else:
             # Parse the "Fichajes" section
             player_card = elem.xpath('.//player-card')[0]
             from_to = player_card.xpath('.//div[contains(@class, "from-to")]')[0]
-            return [{
-                'tipo': 'negociación',
-                'fecha': parse_date(elem.xpath('.//div[@class="date"]/@title')[0]),
-                'vendedor': from_to.xpath('.//user-link')[0].text_content().strip(),
-                'comprador': from_to.xpath('.//user-link')[1].text_content().strip(),
-                'jugador': player_card.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
-                'precio': int(re.sub(r'\s+|€|\.', '', player_card.xpath('.//*[contains(text(), "€")]')[0].text_content())),
-            }]
+            try:
+                return [{
+                        'tipo': 'negociación',
+                        'fecha': parse_date(elem.xpath('.//div[@class="date"]/@title')[0]),
+                        'vendedor': pc.xpath('.//user-link')[0].text_content().strip(),
+                        'comprador': pc.xpath('.//user-link')[1].text_content().strip(),
+                        'jugador': pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
+                        'precio': int(re.sub(r'\s+|€|\.', '', player_card.xpath('.//*[contains(text(), "€")]')[0].text_content())),
+                    } for pc in elem.xpath('.//player-card')
+                ]
+            except IndexError:
+                return [{
+                        'tipo': 'venta',
+                        'fecha': parse_date(elem.xpath('.//div[@class="date"]/@title')[0]),
+                        'vendedor': pc.xpath('.//user-link')[0].text_content().strip(),
+                        'jugador': pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
+                        'precio': int(re.sub(r'\s+|€|\.', '', pc.xpath('.//*[contains(text(), "€")]')[0].text_content())),
+                    } for pc in elem.xpath('.//player-card')
+                ]
     elif elem.xpath('.//h3[normalize-space()="Cláusulas"]'):
         # Parse the "Cláusulas" section
         player_card = elem.xpath('.//player-card')[0]
         from_to = player_card.xpath('.//div[contains(@class, "from-to")]')[0]
-        return [{
-            'tipo': 'cláusula',
-            'fecha': parse_date(elem.xpath('.//div[@class="date"]/@title')[0]),
-            'vendedor': from_to.xpath('.//user-link')[0].text_content().strip(),
-            'comprador': from_to.xpath('.//user-link')[1].text_content().strip(),
-            'jugador': player_card.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
-            'precio': int(re.sub(r'\s+|€|\.', '', player_card.xpath('.//*[contains(text(), "€")]')[0].text_content())),
-        }]
+        return [
+            {
+                'tipo': 'cláusula',
+                'fecha': parse_date(elem.xpath('.//div[@class="date"]/@title')[0]),
+                'vendedor': pc.xpath('.//div[contains(@class, "from-to")]')[0].xpath('.//user-link')[0].text_content().strip(),
+                'comprador': pc.xpath('.//div[contains(@class, "from-to")]')[0].xpath('.//user-link')[1].text_content().strip(),
+                'jugador': pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
+                'precio': int(re.sub(r'\s+|€|\.', '', pc.xpath('.//*[contains(text(), "€")]')[0].text_content())),
+            }
+            for pc in elem.xpath('.//player-card')
+        ]
     elif elem.xpath('.//h3[normalize-space()="Mercado de fichajes"]'):
         # Parse the "Mercado de fichajes" section
         return [
@@ -149,6 +166,11 @@ if __name__ == "__main__":
 
     # print(f"Fichajes: {fichajes_posts}")
     # print(f"Found {len(fichajes_posts)} Fichajes:")
+
+    # df_existente = pd.read_excel('Pasta_Biwenger_Portatil_Gris.xlsx', sheet_name='Guacamayos')
+    # print(df_existente.head())
+
+
     with open("fichajes.csv", "a", encoding="utf-8") as f:
         f.write(f"tipo,fecha,vendedor,comprador,jugador,precio\n")
         for post in fichajes_posts:
@@ -157,8 +179,8 @@ if __name__ == "__main__":
         # crea un csv donde cada fila es un elemento de la lista fichajes_post
             # ring(post)
 
-        if post['tipo'] == 'compra':
-            f.write(f"{post['tipo']},{post['fecha']},,{post['comprador']},{post['jugador']},{post['precio']}\n")
-        elif post['tipo'] == 'venta':
-            f.write(f"{post['tipo']},{post['fecha']},{post['vendedor']}, ,{post['jugador']},{post['precio']}\n")
-    f.close()
+            if post['tipo'] == 'compra':
+                f.write(f"{post['tipo']},{post['fecha']},,{post['comprador']},{post['jugador']},{post['precio']}\n")
+            elif post['tipo'] == 'venta':
+                f.write(f"{post['tipo']},{post['fecha']},{post['vendedor']}, ,{post['jugador']},{post['precio']}\n")
+
