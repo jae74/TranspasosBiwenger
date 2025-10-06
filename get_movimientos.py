@@ -1,11 +1,12 @@
+import openpyxl
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
 import time
 from lxml import html as lxml_html
 import re
 from datetime import datetime
 import pandas as pd
+from openpyxl import load_workbook
 
 _default_cookies = {
     'AMCV_2387401053DB208C0A490D4C%40AdobeOrg': '1176715910%7CMCIDTS%7C20333%7CMCMID%7C83191080408405748529212420616018517824%7CMCAID%7CNONE%7CMCOPTOUT-1756827643s%7CNONE%7CvVersion%7C5.4.0',
@@ -60,19 +61,59 @@ def extract_player_cards(lxml_tree):
     return lxml_tree.xpath('//player-card')
 
 def parse_fichaje(elem):
+    """
+    Parse a single <league-board-post> element to extract transfer information.
+    Handles "Fichajes", "Cláusulas", and "Mercado de fichajes" sections.
+    1. Fichajes: Can be sales or negotiations.
+    2. Cláusulas: Transfers via release clauses.
+    3. Mercado de fichajes: Purchases from the market.
+    4. If none of these sections are found, returns None.
+    5. Each transfer is represented as a dictionary with keys:
+       - 'tipo': 'venta', 'negociación', 'cláusula', or 'compra'
+       - 'fecha': datetime object of the transfer date
+       - 'vendedor': seller's username (if applicable)
+       - 'comprador': buyer's username (if applicable)
+       - 'jugador': player's name
+       - 'precio': transfer price as an integer
+    6. Returns a list of such dictionaries or None if no transfers found.
+    7. Uses XPath to navigate the HTML structure.
+    8. Cleans and converts data types as necessary (e.g., price to integer).
+    9. Handles potential missing data gracefully.
+    10. Example usage:
+        fichajes = parse_fichaje(league_board_post_element)
+        for fichaje in fichajes:
+            print(fichaje)
+    11. Requires lxml and re modules.
+    :param elem:
+    :return:
+    """
+    print(elem.xpath('.//h3[normalize-space()="Fichajes"]')[-1])
     if elem.xpath('.//h3[normalize-space()="Fichajes"]'):
         if elem.xpath('.//div[contains(concat(" ", @class, " "), " header ")][./user-link]'):
             # Parse the "Fichajes" section
+            trades = []
             player_card = elem.xpath('.//player-card')[0]
-            return [{
-                    'tipo': 'venta',
-                    'fecha': parse_date(elem.xpath('.//div[@class="date"]/@title')[0]),
-                    'vendedor': elem.xpath('.//user-link')[0].text_content().strip(),
-                    'jugador': pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
-                    'precio': int(re.sub(r'\s+|€|\.', '', pc.xpath('.//*[contains(text(), "€")]')[0].text_content())),
-                }
-                for pc in elem.xpath('.//player-card')
-            ]
+            for pc in elem.xpath('.//player-card'):
+                trades.append([{
+                        'tipo': 'venta',
+                        'fecha': parse_date(elem.xpath('.//div[@class="date"]/@title')[0]),
+                        'vendedor': elem.xpath('.//user-link')[0].text_content().strip(),
+                        'jugador': pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
+                        'precio': int(re.sub(r'\s+|€|\.', '', pc.xpath('.//*[contains(text(), "€")]')[0].text_content())),
+                    }
+                ])
+                print(pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip())
+                insertar_dato_excel(
+                    elem.xpath('.//user-link')[0].text_content().strip(),
+                    5,
+                    pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
+                )
+                insertar_dato_excel(
+                    elem.xpath('.//user-link')[0].text_content().strip(),
+                    6,
+                    int(re.sub(r'\s+|€|\.', '', pc.xpath('.//*[contains(text(), "€")]')[0].text_content())),
+                )
+            return trades
         else:
             # Parse the "Fichajes" section
             player_card = elem.xpath('.//player-card')[0]
@@ -147,6 +188,31 @@ def parse_date(date_string):
     except Exception:
         return None
 
+def insertar_dato_excel(sheet_name, col=1, dato='No introducido'):
+    file_path = 'Pasta_Biwenger_Portatil_Gris.xlsx'
+
+    wb = load_workbook(file_path)  # Abrir el archivo
+    ws = wb[sheet_name]
+
+    ultima_fila = ws.max_row
+    while ultima_fila > 0 and ws.cell(row=ultima_fila, column=col).value is None:
+        ultima_fila -= 1
+    ultima_fila += 1  # Mover a la siguiente fila vacía
+
+    ws.cell(row=ultima_fila, column=col, value=dato) # Insertar el dato
+
+    wb.save(file_path)
+
+# def comprobar_fichaje_excel():
+#
+#     wb = load_workbook(file_path)  # Abrir el archivo
+#     ws = wb[sheet_name]
+#
+#     for row in range(1, ws.max_row + 1):
+#         if ws.cell(row=row, column=col).value == dato:
+#             return True
+#     return False
+
 if __name__ == "__main__":
     # Example usage:
     lxml_tree = get_parsed_html('https://biwenger.as.com/')
@@ -156,31 +222,26 @@ if __name__ == "__main__":
     fichajes_posts = extract_movements(lxml_tree)
     # print(soup.prettify())
     with open("test.html", "w", encoding="utf-8") as f:
-        
-        f.write(lxml_html.tostring(lxml_tree, pretty_print=True, encoding='unicode'))
 
+        f.write(lxml_html.tostring(lxml_tree, pretty_print=True, encoding='unicode'))
     # print(lxml_html.tostring(lxml_tree, pretty_print=True, encoding='unicode'))
 
     # print(f"Found {len(player_cards)} player cards.")
     # print(player_cards)
 
-    # print(f"Fichajes: {fichajes_posts}")
-    # print(f"Found {len(fichajes_posts)} Fichajes:")
+    print(f"Fichajes: {fichajes_posts}")
+    print(f"Found {len(fichajes_posts)} Fichajes:")
 
-    # df_existente = pd.read_excel('Pasta_Biwenger_Portatil_Gris.xlsx', sheet_name='Guacamayos')
-    # print(df_existente.head())
-
-
-    with open("fichajes.csv", "a", encoding="utf-8") as f:
-        f.write(f"tipo,fecha,vendedor,comprador,jugador,precio\n")
-        for post in fichajes_posts:
-            print(post)
-            # print(lxml_html.tost
-        # crea un csv donde cada fila es un elemento de la lista fichajes_post
-            # ring(post)
-
-            if post['tipo'] == 'compra':
-                f.write(f"{post['tipo']},{post['fecha']},,{post['comprador']},{post['jugador']},{post['precio']}\n")
-            elif post['tipo'] == 'venta':
-                f.write(f"{post['tipo']},{post['fecha']},{post['vendedor']}, ,{post['jugador']},{post['precio']}\n")
+    # with open("fichajes.csv", "a", encoding="utf-8") as f:
+    #     f.write(f"tipo,fecha,vendedor,comprador,jugador,precio\n")
+    #     for post in fichajes_posts:
+    #         print(post)
+    #         # print(lxml_html.tost
+    #     # crea un csv donde cada fila es un elemento de la lista fichajes_post
+    #         # ring(post)
+    #
+    #         if post['tipo'] == 'compra':
+    #             f.write(f"{post['tipo']},{post['fecha']},,{post['comprador']},{post['jugador']},{post['precio']}\n")
+    #         elif post['tipo'] == 'venta':
+    #             f.write(f"{post['tipo']},{post['fecha']},{post['vendedor']}, ,{post['jugador']},{post['precio']}\n")
 
