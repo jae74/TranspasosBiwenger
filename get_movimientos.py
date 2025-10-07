@@ -87,32 +87,37 @@ def parse_fichaje(elem):
     :param elem:
     :return:
     """
-    print(elem.xpath('.//h3[normalize-space()="Fichajes"]')[-1])
     if elem.xpath('.//h3[normalize-space()="Fichajes"]'):
         if elem.xpath('.//div[contains(concat(" ", @class, " "), " header ")][./user-link]'):
             # Parse the "Fichajes" section
             trades = []
             player_card = elem.xpath('.//player-card')[0]
             for pc in elem.xpath('.//player-card'):
-                trades.append([{
+                print(parse_date(elem.xpath('.//div[@class="date"]/@title')[0]))
+                trades.append({
                         'tipo': 'venta',
                         'fecha': parse_date(elem.xpath('.//div[@class="date"]/@title')[0]),
                         'vendedor': elem.xpath('.//user-link')[0].text_content().strip(),
                         'jugador': pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
                         'precio': int(re.sub(r'\s+|€|\.', '', pc.xpath('.//*[contains(text(), "€")]')[0].text_content())),
                     }
-                ])
-                print(pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip())
-                insertar_dato_excel(
-                    elem.xpath('.//user-link')[0].text_content().strip(),
-                    5,
-                    pc.xpath('.//div[contains(@class, "main")]')[0].text_content().strip(),
-                )
-                insertar_dato_excel(
-                    elem.xpath('.//user-link')[0].text_content().strip(),
-                    6,
-                    int(re.sub(r'\s+|€|\.', '', pc.xpath('.//*[contains(text(), "€")]')[0].text_content())),
-                )
+
+            print(trades)
+
+            for trade in trades:
+                print(comprobar_venta_excel(trade))
+                if comprobar_venta_excel(trade):
+                    print(trade['jugador'])
+                    insertar_dato_excel(
+                        trade['vendedor'],
+                        5,
+                        trade['jugador'],
+                    )
+                    insertar_dato_excel(
+                        trade['vendedor'],
+                        6,
+                        trade['precio'],
+                    )
             return trades
         else:
             # Parse the "Fichajes" section
@@ -171,7 +176,7 @@ def extract_movements(lxml_tree):
     fichajes_posts = lxml_tree.xpath(
         '//league-board-post[.//h3[normalize-space()="Fichajes"]|.//h3[normalize-space()="Mercado de fichajes"]|.//h3[normalize-space()="Cláusulas"]]'
     )
-    return sum([parse_fichaje(post) for post in fichajes_posts if parse_fichaje(post)], [])
+    return sum([fichaje for fichaje in [parse_fichaje(post) for post in fichajes_posts] if fichaje], [])
 
 def parse_date(date_string):
     # Example: '2 sept 2025, 12:29:37'
@@ -185,7 +190,8 @@ def parse_date(date_string):
         month = months[month_str.lower()]
         dt_str = f"{day.zfill(2)}/{month:02d}/{year.strip()} {time_str.strip()}"
         return datetime.strptime(dt_str, "%d/%m/%Y %H:%M:%S")
-    except Exception:
+    except Exception as e:
+        print(e)
         return None
 
 def insertar_dato_excel(sheet_name, col=1, dato='No introducido'):
@@ -203,15 +209,18 @@ def insertar_dato_excel(sheet_name, col=1, dato='No introducido'):
 
     wb.save(file_path)
 
-# def comprobar_fichaje_excel():
-#
-#     wb = load_workbook(file_path)  # Abrir el archivo
-#     ws = wb[sheet_name]
-#
-#     for row in range(1, ws.max_row + 1):
-#         if ws.cell(row=row, column=col).value == dato:
-#             return True
-#     return False
+def comprobar_venta_excel(trade):
+
+    file_path = 'Pasta_Biwenger_Portatil_Gris.xlsx'
+    wb = load_workbook(file_path)  # Abrir el archivo
+    ws = wb[trade['vendedor']]
+    date = ws["K2"].value
+    fecha_historial = date
+    fecha_trade=datetime.strptime(str(trade['fecha']), "%Y-%m-%d %H:%M:%S")
+    if fecha_trade>fecha_historial:
+        return True
+    else:
+        return False
 
 if __name__ == "__main__":
     # Example usage:
