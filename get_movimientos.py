@@ -7,7 +7,8 @@ from datetime import datetime
 import pandas as pd
 from openpyxl import load_workbook
 
-class ConnectBiwenger():
+
+class ConnectBiwenger:
 
     default_cookies = {
         'AMCV_2387401053DB208C0A490D4C%40AdobeOrg': '1176715910%7CMCIDTS%7C20333%7CMCMID%7C83191080408405748529212420616018517824%7CMCAID%7CNONE%7CMCOPTOUT-1756827643s%7CNONE%7CvVersion%7C5.4.0',
@@ -31,8 +32,12 @@ class ConnectBiwenger():
         'satellizer_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOjI4NDg4NzEyLCJpYXQiOjE3NTYzMjYwMzB9.-WcC0Nfra44pYArsQv4uR2rzlgP2eCLZVzTPqaHjBTk',
     }
 
-    @staticmethod
-    def get_parsed_html(url, cookies_dict=default_cookies, local_storage_dict=default_local_storage):
+    def get_parsed_html(self, url, cookies_dict=None, local_storage_dict=None):
+        if cookies_dict is None:
+            cookies_dict = self.default_cookies
+        if local_storage_dict is None:
+            local_storage_dict = self.default_local_storage
+
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-gpu")
@@ -69,7 +74,7 @@ class ConnectBiwenger():
                 lxml_tree = lxml_html.fromstring(f.read())
             return lxml_tree
 
-class ParseTrades():
+class ParseTrades:
     @staticmethod
     def fichajes(elem_post):
         if elem_post.xpath('.//div[contains(concat(" ", @class, " "), " header ")][./user-link]'):
