@@ -1,0 +1,972 @@
+{
+    "results": [
+        {
+            "goals": 0,
+            "successfulDribbles": 0,
+            "tackles": 0,
+            "assists": 0,
+            "accuratePassesPercentage": 78.95,
+            "rating": 7.9,
+            "player": {
+                "name": "Quentin Braat",
+                "slug": "quentin-braat",
+                "userCount": 71,
+                "id": 826568
+            },
+            "team": {
+                "name": "Real Oviedo",
+                "slug": "real-oviedo",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2851,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "ريال اوفيدو",
+                        "ru": "Реал Овьедо",
+                        "hi": "रियल ओविएडो"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 0,
+            "successfulDribbles": 3,
+            "tackles": 4,
+            "assists": 0,
+            "accuratePassesPercentage": 68.18,
+            "rating": 7.7,
+            "player": {
+                "name": "Carlos Clerc",
+                "slug": "carlos-clerc",
+                "userCount": 87,
+                "id": 192430,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "كارلوس كليرك",
+                        "hi": "कार्लोस क्लर्क",
+                        "bn": "কার্লোস ক্লার্ক"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ك. كليرك",
+                        "hi": "सी. क्लर्क",
+                        "bn": "সি. ক্লার্ক"
+                    }
+                }
+            },
+            "team": {
+                "name": "Elche",
+                "slug": "elche",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2846,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "إلتشي",
+                        "ru": "Эльче",
+                        "hi": "एल्चे",
+                        "bn": "এলচে"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 0,
+            "successfulDribbles": 0,
+            "tackles": 0,
+            "assists": 0,
+            "accuratePassesPercentage": 71.88,
+            "rating": 7.5,
+            "player": {
+                "name": "Alfonso Pastor",
+                "slug": "alfonso-pastor",
+                "userCount": 65,
+                "id": 872868,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "ألفونسو باستور",
+                        "hi": "अल्फांसो पेस्टर",
+                        "bn": "আলফোনসো পেস্টর"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "أ. باستور",
+                        "hi": "ए. पेस्टर",
+                        "bn": "এ. পেস্টর"
+                    }
+                }
+            },
+            "team": {
+                "name": "Levante UD",
+                "slug": "levante-ud",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2849,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "ليفانتي يو دي",
+                        "ru": "Леванте",
+                        "hi": "लेवांटे यूडी"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ليفانتي",
+                        "hi": "लेवांते",
+                        "bn": "লেভান্তে"
+                    }
+                }
+            }
+        },
+        {
+            "goals": 16,
+            "successfulDribbles": 63,
+            "tackles": 42,
+            "assists": 17,
+            "accuratePassesPercentage": 70.03,
+            "rating": 7.45,
+            "player": {
+                "name": "Andrés Martín",
+                "slug": "andres-martin",
+                "userCount": 838,
+                "id": 922939,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "أندريس مارتن",
+                        "hi": "एन्ड्रेस मार्टिन",
+                        "bn": "আন্দ্রেস মার্টিন"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "أ. مارتن",
+                        "hi": "ए. मार्टिन",
+                        "bn": "এ. মার্টিন"
+                    }
+                }
+            },
+            "team": {
+                "name": "Real Racing Club",
+                "slug": "racing-de-santander",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2835,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "راسينج دي سانتاندر",
+                        "ru": "Расинг Сантандер"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 10,
+            "successfulDribbles": 54,
+            "tackles": 48,
+            "assists": 6,
+            "accuratePassesPercentage": 74.43,
+            "rating": 7.44,
+            "player": {
+                "name": "Javier Ontiveros",
+                "slug": "javier-ontiveros",
+                "userCount": 395,
+                "id": 825750,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "خافيير أونتيفيروس",
+                        "hi": "जेवियर ओनटिवेरोस",
+                        "bn": "জাভিয়ের ওন্টিভেরোস"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "خ. أونتيفيروس",
+                        "hi": "जे. ओनटिवेरोस",
+                        "bn": "জে. ওন্টিভেরোস"
+                    }
+                }
+            },
+            "team": {
+                "name": "Cádiz",
+                "slug": "cadiz",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 4488,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "قادس",
+                        "ru": "Кадис",
+                        "hi": "कैडिज़",
+                        "bn": "ক্যাডিজ"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "قادس"
+                    }
+                }
+            }
+        },
+        {
+            "goals": 4,
+            "successfulDribbles": 9,
+            "tackles": 14,
+            "assists": 4,
+            "accuratePassesPercentage": 75.92,
+            "rating": 7.44,
+            "player": {
+                "name": "Lucas Pérez",
+                "slug": "lucas-perez",
+                "userCount": 1071,
+                "id": 107128,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "لوكاس بيريز",
+                        "hi": "लुकास पेरेज़",
+                        "bn": "লুকাস পেরেজ"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ل. بيريز",
+                        "hi": "एल. पेरेज़",
+                        "bn": "এল. পেরেজ"
+                    }
+                }
+            },
+            "team": {
+                "name": "Deportivo La Coruña",
+                "slug": "deportivo-la-coruna",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2832,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "ديبورتيفو لا كورونيا",
+                        "ru": "Депортиво Ла-Корунья"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 27,
+            "successfulDribbles": 51,
+            "tackles": 21,
+            "assists": 8,
+            "accuratePassesPercentage": 74.04,
+            "rating": 7.42,
+            "player": {
+                "name": "Luis Javier Suárez",
+                "slug": "luis-javier-suarez",
+                "userCount": 14013,
+                "id": 914213,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "لويس خافيير سواريز",
+                        "hi": "लुइस जेवियर सुआरेज़",
+                        "bn": "লুইস জাভিয়ের সুয়ারেজ"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ل. خ. سواريز",
+                        "hi": "एल.जे. लुइस",
+                        "bn": "এল. সুয়ারেজ"
+                    }
+                }
+            },
+            "team": {
+                "name": "Almería",
+                "slug": "almeria",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2858,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "ألميريا",
+                        "ru": "Алмерия",
+                        "hi": "अल्मेरिया",
+                        "bn": "আলমেরিয়া"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 7,
+            "successfulDribbles": 49,
+            "tackles": 55,
+            "assists": 11,
+            "accuratePassesPercentage": 81.39,
+            "rating": 7.41,
+            "player": {
+                "name": "Carlos Álvarez",
+                "slug": "carlos-alvarez",
+                "userCount": 1381,
+                "id": 1010656,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "كارلوس ألفاريز",
+                        "hi": "कार्लोस अल्वारेज़",
+                        "bn": "কার্লোস আলভারেজ"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ك. ألفاريز",
+                        "hi": "सी. अल्वारेज़",
+                        "bn": "সি. আলভারেজ"
+                    }
+                }
+            },
+            "team": {
+                "name": "Levante UD",
+                "slug": "levante-ud",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2849,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "ليفانتي يو دي",
+                        "ru": "Леванте",
+                        "hi": "लेवांटे यूडी"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ليفانتي",
+                        "hi": "लेवांते",
+                        "bn": "লেভান্তে"
+                    }
+                }
+            }
+        },
+        {
+            "goals": 5,
+            "successfulDribbles": 96,
+            "tackles": 77,
+            "assists": 11,
+            "accuratePassesPercentage": 78.66,
+            "rating": 7.4,
+            "player": {
+                "name": "Cristian Carracedo",
+                "slug": "carracedo-cristian",
+                "userCount": 100,
+                "id": 813737
+            },
+            "team": {
+                "name": "Córdoba",
+                "slug": "cordoba",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2850,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "نادي قرطبة",
+                        "ru": "Кордова"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "قرطبة"
+                    }
+                }
+            }
+        },
+        {
+            "goals": 20,
+            "successfulDribbles": 29,
+            "tackles": 15,
+            "assists": 4,
+            "accuratePassesPercentage": 60.86,
+            "rating": 7.36,
+            "player": {
+                "name": "Joaquin Panichelli",
+                "slug": "panichelli-joaquin",
+                "userCount": 2428,
+                "id": 1410925
+            },
+            "team": {
+                "name": "Mirandés",
+                "slug": "mirandes",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 35092,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "ميرانديس",
+                        "ru": "ФК Мирандес"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ميرانديس"
+                    }
+                }
+            }
+        },
+        {
+            "goals": 6,
+            "successfulDribbles": 72,
+            "tackles": 45,
+            "assists": 8,
+            "accuratePassesPercentage": 86.21,
+            "rating": 7.34,
+            "player": {
+                "name": "Nicolás Fernández",
+                "slug": "nicolas-fernandez",
+                "userCount": 642,
+                "id": 962411,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "نيكولاس فيرنانديز",
+                        "hi": "निकोलस फर्नांडीज",
+                        "bn": "নিকোলাস ফার্নান্ডেজ"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ن. فيرنانديز",
+                        "hi": "एन. फर्नांडीज",
+                        "bn": "এন. ফার্নান্ডেজ"
+                    }
+                }
+            },
+            "team": {
+                "name": "Elche",
+                "slug": "elche",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2846,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "إلتشي",
+                        "ru": "Эльче",
+                        "hi": "एल्चे",
+                        "bn": "এলচে"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 3,
+            "successfulDribbles": 28,
+            "tackles": 59,
+            "assists": 10,
+            "accuratePassesPercentage": 73.89,
+            "rating": 7.32,
+            "player": {
+                "name": "Iñigo Vicente",
+                "slug": "inigo-vicente",
+                "userCount": 422,
+                "id": 605674,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "إنييجو فيسنتي",
+                        "hi": "इनिगो विसेंट",
+                        "bn": "ইনিগো ভিসেন্টে"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "إ. فيسنتي",
+                        "hi": "आई. विसेंट",
+                        "bn": "আই. ভিসেন্টে"
+                    }
+                }
+            },
+            "team": {
+                "name": "Real Racing Club",
+                "slug": "racing-de-santander",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2835,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "راسينج دي سانتاندر",
+                        "ru": "Расинг Сантандер"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 15,
+            "successfulDribbles": 128,
+            "tackles": 43,
+            "assists": 5,
+            "accuratePassesPercentage": 82.36,
+            "rating": 7.31,
+            "player": {
+                "name": "Yeremay Hernández",
+                "slug": "yeremay-hernandez",
+                "userCount": 1986,
+                "id": 1096950,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "يريميا هرنانديز",
+                        "hi": "येरेमे हर्नांडेज़",
+                        "bn": "ইরেমে হার্নান্দেজ"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ي. هرنانديز",
+                        "hi": "वाई. हर्नांडेज़",
+                        "bn": "ওয়াই. হার্নান্দেজ"
+                    }
+                }
+            },
+            "team": {
+                "name": "Deportivo La Coruña",
+                "slug": "deportivo-la-coruna",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2832,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "ديبورتيفو لا كورونيا",
+                        "ru": "Депортиво Ла-Корунья"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 1,
+            "successfulDribbles": 1,
+            "tackles": 2,
+            "assists": 0,
+            "accuratePassesPercentage": 73.68,
+            "rating": 7.3,
+            "player": {
+                "name": "Largie Ramazani",
+                "slug": "largie-ramazani",
+                "userCount": 1623,
+                "id": 909966,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "لارجي رامازاني",
+                        "hi": "लार्गी रमज़ानी",
+                        "bn": "লারজি রামাজানি"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ل. رامازاني",
+                        "hi": "एल. रमज़ानी",
+                        "bn": "এল. রামাজানি"
+                    }
+                }
+            },
+            "team": {
+                "name": "Almería",
+                "slug": "almeria",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2858,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "ألميريا",
+                        "ru": "Алмерия",
+                        "hi": "अल्मेरिया",
+                        "bn": "আলমেরিয়া"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 0,
+            "successfulDribbles": 0,
+            "tackles": 0,
+            "assists": 0,
+            "accuratePassesPercentage": 66.67,
+            "rating": 7.3,
+            "player": {
+                "name": "Jota Domingo",
+                "slug": "jota",
+                "userCount": 12,
+                "id": 2041180
+            },
+            "team": {
+                "name": "Albacete Balompié",
+                "slug": "albacete-balompie",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2848,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "الباسيت بالومبي",
+                        "ru": "Альбасете Баломпие"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 0,
+            "successfulDribbles": 0,
+            "tackles": 0,
+            "assists": 0,
+            "accuratePassesPercentage": 69.39,
+            "rating": 7.3,
+            "player": {
+                "name": "Cristian Rivero",
+                "slug": "cristian-rivero",
+                "userCount": 83,
+                "id": 914744,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "كريستيان ريفيرو",
+                        "hi": "क्रिस्टियन रिवेरो",
+                        "bn": "ক্রিশ্চিয়ান রিভেরো"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ك. ريفيرو",
+                        "hi": "सी. रिवेरो",
+                        "bn": "সি. রিভেরো"
+                    }
+                }
+            },
+            "team": {
+                "name": "Albacete Balompié",
+                "slug": "albacete-balompie",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2848,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "الباسيت بالومبي",
+                        "ru": "Альбасете Баломпие"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 0,
+            "successfulDribbles": 0,
+            "tackles": 1,
+            "assists": 0,
+            "accuratePassesPercentage": 62.58,
+            "rating": 7.3,
+            "player": {
+                "name": "Alfonso Herrero",
+                "slug": "alfonso-herrero",
+                "userCount": 80,
+                "id": 96371
+            },
+            "team": {
+                "name": "Málaga",
+                "slug": "malaga",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2830,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "مالاجا",
+                        "ru": "Малага"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 0,
+            "successfulDribbles": 4,
+            "tackles": 0,
+            "assists": 0,
+            "accuratePassesPercentage": 58.19,
+            "rating": 7.25,
+            "player": {
+                "name": "Pablo Cuñat",
+                "slug": "pablo-cunat",
+                "userCount": 295,
+                "id": 1085579,
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "بابلو كونات",
+                        "hi": "पाब्लो कुनाट",
+                        "bn": "পাবলো চুনাত"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "ب. كونات",
+                        "hi": "पी. कुनाट",
+                        "bn": "পি. ভিলালন"
+                    }
+                }
+            },
+            "team": {
+                "name": "FC Cartagena",
+                "slug": "fc-cartagena",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 24329,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "كارتايينا",
+                        "ru": "Картагена ФК",
+                        "hi": "कारटाजेना"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 0,
+            "successfulDribbles": 0,
+            "tackles": 0,
+            "assists": 0,
+            "accuratePassesPercentage": 88,
+            "rating": 7.25,
+            "player": {
+                "name": "Diego Díaz",
+                "slug": "diego-diaz",
+                "userCount": 8,
+                "id": 1892533
+            },
+            "team": {
+                "name": "Real Racing Club",
+                "slug": "racing-de-santander",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 2835,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "راسينج دي سانتاندر",
+                        "ru": "Расинг Сантандер"
+                    },
+                    "shortNameTranslation": {}
+                }
+            }
+        },
+        {
+            "goals": 12,
+            "successfulDribbles": 43,
+            "tackles": 50,
+            "assists": 4,
+            "accuratePassesPercentage": 70.54,
+            "rating": 7.25,
+            "player": {
+                "name": "Raúl Sánchez",
+                "slug": "raul-sanchez",
+                "userCount": 121,
+                "id": 900989
+            },
+            "team": {
+                "name": "CD Castellón",
+                "slug": "cd-castellon",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "userCount": 0,
+                "national": false,
+                "type": 0,
+                "id": 5067,
+                "teamColors": {
+                    "primary": "#374df5",
+                    "secondary": "#374df5",
+                    "text": "#ffffff"
+                },
+                "fieldTranslations": {
+                    "nameTranslation": {
+                        "ar": "سي دي كاستيليون",
+                        "ru": "ФК Кастеллон"
+                    },
+                    "shortNameTranslation": {
+                        "ar": "كاستيليون"
+                    }
+                }
+            }
+        }
+    ],
+    "page": 1,
+    "pages": 34
+}
