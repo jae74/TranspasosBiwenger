@@ -103,7 +103,7 @@
             "player": {
                 "name": "Alfonso Pastor",
                 "slug": "alfonso-pastor",
-                "userCount": 65,
+                "userCount": 64,
                 "id": 872868,
                 "fieldTranslations": {
                     "nameTranslation": {
@@ -159,7 +159,7 @@
             "player": {
                 "name": "Andrés Martín",
                 "slug": "andres-martin",
-                "userCount": 838,
+                "userCount": 840,
                 "id": 922939,
                 "fieldTranslations": {
                     "nameTranslation": {
@@ -210,7 +210,7 @@
             "player": {
                 "name": "Javier Ontiveros",
                 "slug": "javier-ontiveros",
-                "userCount": 395,
+                "userCount": 394,
                 "id": 825750,
                 "fieldTranslations": {
                     "nameTranslation": {
@@ -265,7 +265,7 @@
             "player": {
                 "name": "Lucas Pérez",
                 "slug": "lucas-perez",
-                "userCount": 1071,
+                "userCount": 1061,
                 "id": 107128,
                 "fieldTranslations": {
                     "nameTranslation": {
@@ -316,7 +316,7 @@
             "player": {
                 "name": "Luis Javier Suárez",
                 "slug": "luis-javier-suarez",
-                "userCount": 14013,
+                "userCount": 14048,
                 "id": 914213,
                 "fieldTranslations": {
                     "nameTranslation": {
@@ -369,7 +369,7 @@
             "player": {
                 "name": "Carlos Álvarez",
                 "slug": "carlos-alvarez",
-                "userCount": 1381,
+                "userCount": 1390,
                 "id": 1010656,
                 "fieldTranslations": {
                     "nameTranslation": {
@@ -425,7 +425,7 @@
             "player": {
                 "name": "Cristian Carracedo",
                 "slug": "carracedo-cristian",
-                "userCount": 100,
+                "userCount": 99,
                 "id": 813737
             },
             "team": {
@@ -466,7 +466,7 @@
             "player": {
                 "name": "Joaquin Panichelli",
                 "slug": "panichelli-joaquin",
-                "userCount": 2428,
+                "userCount": 2452,
                 "id": 1410925
             },
             "team": {
@@ -507,7 +507,7 @@
             "player": {
                 "name": "Nicolás Fernández",
                 "slug": "nicolas-fernandez",
-                "userCount": 642,
+                "userCount": 645,
                 "id": 962411,
                 "fieldTranslations": {
                     "nameTranslation": {
@@ -611,7 +611,7 @@
             "player": {
                 "name": "Yeremay Hernández",
                 "slug": "yeremay-hernandez",
-                "userCount": 1986,
+                "userCount": 1997,
                 "id": 1096950,
                 "fieldTranslations": {
                     "nameTranslation": {
@@ -805,7 +805,7 @@
             "player": {
                 "name": "Alfonso Herrero",
                 "slug": "alfonso-herrero",
-                "userCount": 80,
+                "userCount": 81,
                 "id": 96371
             },
             "team": {
@@ -844,7 +844,7 @@
             "player": {
                 "name": "Pablo Cuñat",
                 "slug": "pablo-cunat",
-                "userCount": 295,
+                "userCount": 297,
                 "id": 1085579,
                 "fieldTranslations": {
                     "nameTranslation": {

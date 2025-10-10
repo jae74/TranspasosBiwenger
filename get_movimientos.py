@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 import time
 from lxml import html as lxml_html
 import re
@@ -42,7 +43,7 @@ class ConnectBiwenger:
             local_storage_dict = default_local_storage
 
         chrome_options = Options()
-        chrome_options.add_argument("--headless")
+        #chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--no-sandbox")
         driver = webdriver.Chrome(options=chrome_options)
@@ -56,10 +57,20 @@ class ConnectBiwenger:
             for key, value in local_storage_dict.items():
                 driver.execute_script(f"window.localStorage.setItem('{key}', '{value}');")
             driver.refresh()
-            time.sleep(5)  # Wait for page to load; adjust as needed
+            time.sleep(3)  # Wait for page to load; adjust as needed
 
             html = driver.page_source
-            lxml_tree = lxml_html.fromstring(html)
+            lxml_tree=[]
+            lxml_tree.append({
+                'feed': lxml_html.fromstring(html)
+            })
+            button_name = '/html/body/app-root/app-nav/nav/linear-tabs/ul/li[2]/a'
+            driver.find_element(By.XPATH, button_name).click()
+            time.sleep(2)
+            html = driver.page_source
+            lxml_tree.append({
+                'equipos': lxml_html.fromstring(html)
+            })
             return lxml_tree
         finally:
             driver.quit()
@@ -67,17 +78,26 @@ class ConnectBiwenger:
     @staticmethod
     def access_biwenger(update=False):
         global now_biwenger  # Declarar que usarás la global
+        lxml_tree = []
         if update:
             lxml_tree = ConnectBiwenger.get_parsed_html('https://biwenger.as.com/')  # lxml_tree
             now_biwenger = datetime.now()
             print(f"Última actualización de Biwenger a las: {now_biwenger}")
             with open("test.html", "w", encoding="utf-8") as f:
-                f.write(lxml_html.tostring(lxml_tree, pretty_print=True, encoding='unicode'))
-            return lxml_tree
+                f.write(lxml_html.tostring(lxml_tree[0]['feed'], pretty_print=True, encoding='unicode'))
+            with open("test_Equipos.html", "w", encoding="utf-8") as f:
+                f.write(lxml_html.tostring(lxml_tree[1]['equipos'], pretty_print=True, encoding='unicode'))
         else:
             with open("test.html", "r", encoding="utf-8") as f:
-                lxml_tree = lxml_html.fromstring(f.read())
-            return lxml_tree
+                lxml_tree += [{
+                    'feed': lxml_html.fromstring(f.read()),
+                }]
+
+            with open("test_Equipos.html", "r", encoding="utf-8") as f:
+                lxml_tree += [{
+                    'equipos': lxml_html.fromstring(f.read()),
+                }]
+        return lxml_tree
 
 class Excell_Manager:
 
@@ -200,6 +220,18 @@ class Excell_Manager:
                 )
                 Excell_Manager.update_date(trade['comprador'], trade['fecha'])
             return None
+
+    @staticmethod
+    def update_squadvalue(details):
+        file_path = 'Pasta_Biwenger_Portatil_Gris.xlsx'
+        sheet_name = details['user']
+
+        wb = load_workbook(file_path)  # Abrir el archivo
+        ws = wb[sheet_name]
+
+        ws.cell(row=2, column=8, value=details['value'])  # Insertar el dato
+
+        wb.save(file_path)
 
 class ParseTrades:
     @staticmethod
@@ -330,25 +362,41 @@ def extract_movements(lxml_tree):
     fichajes_posts = fichajes_posts[::-1]
     return sum([fichaje for fichaje in [parse_fichaje(post) for post in fichajes_posts] if fichaje], [])
 
+
+
+def update_squad_value(lxml_tree):
+    details_users = lxml_tree.xpath('//div[contains(@class, "table-responsive section-xs light")]//tbody/*') # //td[contains(@class, "text-left user-name")]//a[contains(@role, "button")]
+    details=[]
+    for details_user in details_users:
+        detail = {
+            'user': details_user.xpath('.//td[contains(@class, "text-left user-name")]//a[contains(@role, "button")]')[0].text_content().strip(),
+            'value': int(re.sub(r'\s+|€|\.|[a-zA-Z]', '', details_user.xpath('.//*[contains(text(), "€")]/@aria-label')[0]))
+        }
+        Excell_Manager.update_squadvalue(detail)
+        details.append(detail)
+
 if __name__ == "__main__":
     now_biwenger = datetime.now()
     update = True
-    lxml_tree = ConnectBiwenger.access_biwenger(update)
+    lxml_tree_list = ConnectBiwenger.access_biwenger(update)
+    lxml_tree = lxml_tree_list[0]
 
-    fichajes_posts = extract_movements(lxml_tree)
+    # fichajes_posts = extract_movements(lxml_tree)
+    #
+    # Excell_Manager.update_date_to_now(now_biwenger)
+    #
+    # print(f"Found {len(fichajes_posts)} Fichajes:")
+    # post_str = ""
+    # for post in fichajes_posts:
+    #     # print(post)
+    #     if post['tipo'] == 'compra':
+    #         post_str += f"{post['tipo']},{post['fecha']},,{post['comprador']},{post['jugador']},{post['precio']}\n"
+    #     elif post['tipo'] == 'venta':
+    #         post_str += f"{post['tipo']},{post['fecha']},{post['vendedor']}, ,{post['jugador']},{post['precio']}\n"
+    #     elif post['tipo'] == 'negociación':
+    #         post_str += f"{post['tipo']},{post['fecha']},{post['vendedor']}, ,{post['jugador']},{post['precio']}\n"
+    #     elif post['tipo'] == 'cláusula':
+    #         post_str += f"{post['tipo']},{post['fecha']},{post['vendedor']},{post['comprador']},{post['jugador']},{post['precio']}\n"
+    # print(post_str)
 
-    Excell_Manager.update_date_to_now(now_biwenger)
-
-    print(f"Found {len(fichajes_posts)} Fichajes:")
-    post_str = ""
-    for post in fichajes_posts:
-        # print(post)
-        if post['tipo'] == 'compra':
-            post_str += f"{post['tipo']},{post['fecha']},,{post['comprador']},{post['jugador']},{post['precio']}\n"
-        elif post['tipo'] == 'venta':
-            post_str += f"{post['tipo']},{post['fecha']},{post['vendedor']}, ,{post['jugador']},{post['precio']}\n"
-        elif post['tipo'] == 'negociación':
-            post_str += f"{post['tipo']},{post['fecha']},{post['vendedor']}, ,{post['jugador']},{post['precio']}\n"
-        elif post['tipo'] == 'cláusula':
-            post_str += f"{post['tipo']},{post['fecha']},{post['vendedor']},{post['comprador']},{post['jugador']},{post['precio']}\n"
-    print(post_str)
+    update_squad_value(lxml_tree_list[1]['equipos'])
