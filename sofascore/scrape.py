@@ -3,13 +3,13 @@ from urllib.parse import urlencode
 import json
 
 class SofaScoreScraper:
-    def __init__(self):
+    def __init__(self, fields="goals,successfulDribbles,tackles,assists,accuratePassesPercentage,rating"):
         self.base_url = "https://www.sofascore.com/api/v1/unique-tournament/54/season/62048/statistics"
         self.params = {
             "limit": 20,
             "order": "-rating",
             "accumulation": "total",
-            "fields": "goals,successfulDribbles,tackles,assists,accuratePassesPercentage,rating",
+            "fields": fields,
             "filters": "position.in.G~D~M~F",
             "group": "summary",
         }
